@@ -1,0 +1,64 @@
+{
+  "links": {
+    "all-categories": "All Categories",
+    "home":"Home Page"
+  },
+  "navbar": {
+    "home": "Home",
+    "categories": "Categories",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "faqs": "FAQs",
+    "profile": "Profile",
+    "account": "Account",
+    "logOut": "Log out",
+    "cart": "Cart",
+    "notifications": "Notifications",
+    "language": "Language"
+  },
+  "categories": {
+    "breadcrumb": "Breadcrumb",
+    "categories_slider": "Categories Slider",
+    "filter_option": "Filter Option",
+    "clear_all": "Clear All",
+    "showing_results": "Showing {start}-{end} of {total} results",
+    "filter_options": "Filter Options",
+    "pagination_previous": "Previous",
+    "pagination_next": "Next"
+  },
+  "filter": {
+    "materials": "Materials",
+    "colors": "Colors",
+    "size": "Size",
+    "enter_size": "Enter size",
+    "price": "Price",
+    "from": "From",
+    "to": "To",
+    "clear_all": "Clear all",
+    "apply": "Apply"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "phone": "+87 01928491",
+    "email": "NWAA31P@gmail.com",
+    "address": "381, Cairo, Egypt",
+    "letUsHelp": "Let Us Help",
+    "myAccount": "My Account",
+    "faqs": "FAQs",
+    "contactSupport": "Contact & Support",
+    "categories": "Categories",
+    "allProducts": "All Products",
+    "ourCompany": "Our Company",
+    "ourPrivacy": "Our Privacy",
+    "termsAndConditions": "Terms and Conditions",
+    "copyright": "All Copyright Reserved for NWAA™ 2025",
+    "socialMedia": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "telegram": "Telegram"
+    }
+  }
+}

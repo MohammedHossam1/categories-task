@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-main{
+  @apply bg-main text-white py-4  lg:py-6 rounded-xl w-full hover:bg-main/80 text-base transition-all duration-300
+}
+.btn-outline-main{
+  @apply bg-white text-main py-4 border border-main hover:text-white  lg:py-6 rounded-xl w-full hover:bg-main/80 text-base transition-all duration-300
+}
+
+

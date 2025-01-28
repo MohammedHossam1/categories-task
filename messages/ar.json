@@ -1,0 +1,64 @@
+{
+    "links": {
+        "all-categories": "كل الاقسام",
+        "home":"الصفحة الرئيسية"
+    },
+    "navbar": {
+        "home": "الصفحة الرئيسية",
+        "categories": "الفئات",
+        "aboutUs": "من نحن",
+        "contactUs": "اتصل بنا",
+        "faqs": "الأسئلة الشائعة",
+        "profile": "الملف الشخصي",
+        "account": "الحساب",
+        "logOut": "تسجيل الخروج",
+        "cart": "عربة التسوق",
+        "notifications": "الإشعارات",
+        "language": "اللغة"
+    },
+    "categories": {
+        "breadcrumb": "المسار",
+        "categories_slider": "شريط تمرير الفئات",
+        "filter_option": "خيارات التصفية",
+        "clear_all": "مسح الكل",
+        "showing_results": "عرض {start}-{end} من {total} النتائج",
+        "filter_options": "خيارات التصفية",
+        "pagination_previous": "السابق",
+        "pagination_next": "التالي"
+    },
+    "filter": {
+        "materials": "المواد",
+        "colors": "الألوان",
+        "size": "الحجم",
+        "enter_size": "أدخل الحجم",
+        "price": "السعر",
+        "from": "من",
+        "to": "إلى",
+        "clear_all": "مسح الكل",
+        "apply": "تطبيق"
+    },
+    "footer": {
+        "aboutUs": "من نحن",
+        "contactUs": "اتصل بنا",
+        "phone": "+87 01928491",
+        "email": "NWAA31P@gmail.com",
+        "address": "381، القاهرة، مصر",
+        "letUsHelp": "دعونا نساعد",
+        "myAccount": "حسابي",
+        "faqs": "الأسئلة الشائعة",
+        "contactSupport": "الاتصال والدعم",
+        "categories": "الفئات",
+        "allProducts": "جميع المنتجات",
+        "ourCompany": "شركتنا",
+        "ourPrivacy": "خصوصيتنا",
+        "termsAndConditions": "الشروط والأحكام",
+        "copyright": "جميع الحقوق محفوظة لـ NWAA™ 2025",
+        "socialMedia": {
+            "facebook": "فيسبوك",
+            "twitter": "تويتر",
+            "instagram": "إنستغرام",
+            "linkedin": "لينكدإن",
+            "telegram": "تيليجرام"
+        }
+    }
+}
