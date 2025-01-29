@@ -1,7 +1,9 @@
+'use client'
+import CategoriesCarousel from "@/components/categories-carousel/categories-carousel";
 import CategoriesUi from "@/components/categories-ui/categories-ui";
-import { fetchData } from "@/components/shared/fetch-data";
-import { getLocale } from "next-intl/server";
-export default async function page() {
+import CustomBreadcrumb from "@/components/CustomBreadcrumb";
+import { useCategoryNameContext } from "@/context/category-name";
+export default  function page() {
   let categories = [];
   const categoriesCards = [
     {
@@ -81,15 +83,15 @@ export default async function page() {
       oldPrice: 300,
     },
   ];
-  const locale = await getLocale()
-  const res = await fetchData({ url: "/categories/main", lang: locale });
-  if (res.status_code == 200) {
-    categories = res?.data?.data
-  } else if (res.error) {
-    alert('error')
-  }
+ const { categoryName} = useCategoryNameContext()
 
   return (
-    <CategoriesUi categoriesData={categoriesCards} categories={categories} />
+    <>
+      <CustomBreadcrumb route={categoryName} />
+      <div className="container ">
+        <CategoriesCarousel />
+        <CategoriesUi categoriesData={categoriesCards} categories={categories} />
+      </div>
+    </>
   );
 }

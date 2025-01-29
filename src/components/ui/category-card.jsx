@@ -55,7 +55,7 @@ export default function CategoryCard({
           </span>
         </div>
         {/* Title */}
-        <Link href={""} className="hover:text-main text-sm lg:text-base font-semibold text-gray-800 line-clamp-2 lg:h-12">
+        <Link href={""} className="hover:text-main text-sm lg:text-base font-[600] text-gray-800 line-clamp-2 lg:h-12">
           {title}
         </Link>
 

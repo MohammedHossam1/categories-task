@@ -30,7 +30,6 @@ const Navbar = () => {
   const { categoryName, setCategoryName } = useCategoryNameContext();
   const [isPending, startTransition] = useTransition();
   const locale = useLocale();
-  console.log(locale);
 
   const t = useTranslations("navbar"); // Use the translation hook for 'navbar' namespace
 
@@ -114,9 +113,7 @@ const Navbar = () => {
           <button className="p-2 rounded-full hover:bg-gray-100">
             <BiBell className="size-5 xl:size-7 text-gray-600 hover:text-main" />
           </button>
-
           <LanguageSwitcher defaultValue={locale} options={languages} />
-
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className="flex items-center">
@@ -199,7 +196,7 @@ const Navbar = () => {
                   width={100}
                   height={100}
                   className="size-5 xl:size-7 text-gray-600 hover:text-main"
-                  alt={"cart"}
+                  alt={"shopping"}
                 />
               </Link>
               <button className="p-2 rounded-full hover:bg-gray-100">
@@ -207,13 +204,16 @@ const Navbar = () => {
               </button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Image
-                    src={"/user.svg"}
-                    width={100}
-                    height={100}
-                    className="size-5 xl:size-6 text-gray-600 hover:text-main"
-                    alt={"cart"}
-                  />
+                  <>
+                    <Image
+                      src={"/user.svg"}
+                      width={100}
+                      height={100}
+                      className="size-5 xl:size-6 text-gray-600 hover:text-main"
+                      alt={"user"}
+                    />
+                    <RiArrowDownSLine className="size-5  text-gray-600 hover:text-main" />
+                  </>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-44 bg-white rounded-lg">
                   <DropdownMenuLabel>{t("profile")}</DropdownMenuLabel>

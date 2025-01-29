@@ -61,6 +61,7 @@ const CategoriesFilter = () => {
       <AccordionItem value="materials" className="  ">
         <AccordionTrigger className="rounded-2xl px-3 text-xl mb-1 lg:bg-light text-[#333333]">
           {t("materials")}
+
         </AccordionTrigger>
         <AccordionContent className="p-2 pb-5 space-y-2 ">
           {materials.map((material) => (

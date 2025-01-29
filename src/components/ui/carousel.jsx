@@ -157,9 +157,16 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
       ref={ref}
       variant={variant}
       size={size}
-      className={cn("absolute text-2xl size-9 lg:size-12 mx-2 rounded-lg overflow-hidden bg-light text-black ", orientation === "horizontal"
-        ? "right-1/2 -bottom-14 lg:-bottom-24 -translate-y-1/2"
-        : "-top-12 left-1/2 -translate-x-1/2 rotate-90", className)}
+      className={cn("absolute text-2xl size-9 lg:size-12 mx-2 rounded-lg overflow-hidden bg-main text-white ",
+        orientation === "horizontal"
+          ? "right-1/2 -bottom-14 lg:-bottom-24 -translate-y-1/2"
+          : "-top-10 left-1/2 -translate-x-1/2 rotate-90",
+        !canScrollPrev
+          ? "bg-secondary text-black"
+          : "",
+
+
+        className)}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}>
@@ -170,17 +177,24 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
-const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", setCanScrollNext, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
-
+  React.useEffect(() => {
+    setCanScrollNext(canScrollNext);
+  }, [canScrollNext]);
   return (
     (<Button
       ref={ref}
       variant={variant}
       size={size}
-      className={cn("absolute size-9 lg:size-12 mx-2 rounded-lg overflow-hidden bg-main text-white ", orientation === "horizontal"
-        ? "left-1/2  -bottom-14 lg:-bottom-24 -translate-y-1/2"
-        : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90", className)}
+      className={cn("absolute size-9 lg:size-12 mx-2 rounded-lg overflow-hidden bg-main text-white ",
+        orientation === "horizontal"
+          ? "left-1/2  -bottom-14 lg:-bottom-24 -translate-y-1/2"
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        !canScrollNext
+          ? "bg-secondary text-black"
+          : "",
+        className)}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}>

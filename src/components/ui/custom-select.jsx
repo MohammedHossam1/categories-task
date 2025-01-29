@@ -1,4 +1,4 @@
-import React, { useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { motion } from "framer-motion";
 import { setUserLocale } from "@/services/locale";
 import { useCategoryNameContext } from "@/context/category-name";
@@ -30,7 +30,7 @@ const LanguageSwitcher = ({ options, onChange, defaultValue }) => {
     <div className="relative inline-block text-left">
       <button
         onClick={toggleDropdown}
-        className="px-4 py-2 text-lg flex items-center text-black "
+        className="px-4 py-2 flex items-center text-black "
       >
         {selected || "Select an Option"}
         <RiArrowDownSLine className="size-5  text-gray-600 hover:text-main" />
@@ -41,10 +41,13 @@ const LanguageSwitcher = ({ options, onChange, defaultValue }) => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="absolute z-10 mt-2 w-32 bg-white text-black rounded-lg shadow-lg"
+          className="absolute z-10 mt-2 w-20 xl:w-32 bg-white text-black rounded-lg shadow-lg"
         >
-          <div className="absolute top-[-15px] start-5 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] border-b-white border-r-[10px] border-r-transparent"></div>
-          <ul className="py-2 text-balck">
+          <div
+            className="absolute top-[-15px] start-6 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] border-b-white border-r-[10px] border-r-transparent"
+          ></div>
+
+          <ul className="py-2 text-balck text-start">
             {options.map((item, index) => (
               <li
                 key={index}
