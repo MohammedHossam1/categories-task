@@ -11,46 +11,60 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { fetchData } from "../shared/fetch-data";
 import { useCategoryNameContext } from "@/context/category-name";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function CategoriesCarousel() {
   const { setCategoryName } = useCategoryNameContext();
   const [categories, setCategories] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [lastPage, setLastPage] = useState(1);
   const [canScrollNext, setCanScrollNext] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const isFirstRender = useRef(true);
   const locale = useLocale();
+
   const categoriesFetch = async (page) => {
     setIsLoading(true);
     const res = await fetchData({
       url: `/categories/main?page=${page}`,
       lang: locale,
     });
+
     if (res.status_code === 200) {
       setLastPage(res?.data?.meta.last_page);
-      setIsLoading(false);
-
-      setCategories((prev) => [...prev, ...res.data.data]);
+      setCategories((prev) => (page === 1 ? res.data.data : [...prev, ...res.data.data]));
     } else if (res.error) {
-      setIsLoading(false);
       alert("Error fetching categories");
     }
+    setIsLoading(false);
   };
-  useEffect(() => {
-    setCategories([]);
-  }, [locale]);
-  useEffect(() => {
-    categoriesFetch(currentPage);
-  }, [currentPage, locale]);
 
   useEffect(() => {
-    if (!canScrollNext && lastPage <= currentPage) {
+    setCategories([]); 
+    setCurrentPage(1);
+    categoriesFetch(1);
+  }, [locale]);
+
+  useEffect(() => {
+    if (currentPage > 1) {
+      categoriesFetch(currentPage);
+    }
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (!canScrollNext && currentPage < lastPage) {
+      if (isFirstRender.current) {
+        isFirstRender.current = false;
+        return;
+      }
       setCurrentPage((prev) => prev + 1);
     }
   }, [canScrollNext]);
-  if (isLoading)
+
+  if (isLoading && categories.length === 0)
     return <div className="h-full py-10 text-center text-main">Loading..</div>;
+
   return (
     <Carousel className="w-full py-2" dir="ltr">
       <CarouselContent>
@@ -72,7 +86,7 @@ export default function CategoriesCarousel() {
                   />
                 </div>
               </CardContent>
-              <h2 className="p-2 text-[14px]  text-cnowrap lg:text-lg font-bold w-full line-cladmp-1 text-center">
+              <h2 className="p-2 text-[14px] lg:text-lg font-bold w-full  text-center">
                 {category.name}
               </h2>
             </Card>

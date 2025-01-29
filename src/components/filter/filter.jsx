@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useTranslations } from "next-intl";
 
 const CategoriesFilter = () => {
-  const t = useTranslations('filter');
+  const t = useTranslations("filter");
 
   const [selectedMaterials, setSelectedMaterials] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
@@ -57,11 +57,10 @@ const CategoriesFilter = () => {
   };
 
   return (
-    <Accordion type="multiple" className="space-y-4 ">
+    <Accordion type="multiple" className="space-y-4  ">
       <AccordionItem value="materials" className="  ">
         <AccordionTrigger className="rounded-2xl px-3 text-xl mb-1 lg:bg-light text-[#333333]">
           {t("materials")}
-
         </AccordionTrigger>
         <AccordionContent className="p-2 pb-5 space-y-2 ">
           {materials.map((material) => (
@@ -69,10 +68,11 @@ const CategoriesFilter = () => {
               <Checkbox
                 id={material}
                 checked={selectedMaterials.includes(material)}
-                className={`rounded-lg shadow-none size-6 border-main  ${selectedMaterials.includes(material)
-                  ? "bg-main text-white "
-                  : ""
-                  }`}
+                className={`rounded-lg shadow-none size-6 border-main  ${
+                  selectedMaterials.includes(material)
+                    ? "bg-main text-white "
+                    : ""
+                }`}
                 onCheckedChange={() => handleMaterialChange(material)}
               />
               <label htmlFor={material} className="cursor-pointer text-base">
@@ -86,17 +86,17 @@ const CategoriesFilter = () => {
       <AccordionItem value="colors">
         <AccordionTrigger className="rounded-2xl px-3 text-xl mb-1 lg:bg-light text-[#333333]">
           {t("colors")}
-
         </AccordionTrigger>
         <AccordionContent className="p-2 pb-5 space-y-2 ">
           <div className="flex flex-wrap items-center gap-2">
             {colors.map((color) => (
               <div
                 key={color}
-                className={`size-9 rounded-full cursor-pointer ${selectedColors.includes(color)
-                  ? " outline-2 outline-dotted border-black"
-                  : ""
-                  }`}
+                className={`size-9 rounded-full cursor-pointer ${
+                  selectedColors.includes(color)
+                    ? " outline-2 outline-dotted border-black"
+                    : ""
+                }`}
                 style={{ backgroundColor: color.toLowerCase() }}
                 onClick={() => handleColorChange(color)}
               ></div>
@@ -108,7 +108,6 @@ const CategoriesFilter = () => {
       <AccordionItem value="size">
         <AccordionTrigger className="rounded-2xl px-3 text-xl mb-1 lg:bg-light text-[#333333]">
           {t("size")}
-
         </AccordionTrigger>
         <AccordionContent className="p-2 pb-5 space-y-2 ">
           <Input
@@ -124,14 +123,12 @@ const CategoriesFilter = () => {
       <AccordionItem value="price">
         <AccordionTrigger className="rounded-2xl px-3 text-xl mb-1 lg:bg-light text-[#333333]">
           {t("price")}
-
         </AccordionTrigger>
         <AccordionContent className="p-2 pb-5 space-y-2 ">
           <div className="flex items-center gap-2">
             <div className="space-y-1">
               <label htmlFor="" className="text-base text-[#545454]">
                 {t("from")}
-
               </label>
               <Input
                 type="number"
@@ -146,7 +143,6 @@ const CategoriesFilter = () => {
             <div className="space-y-1">
               <label htmlFor="" className="text-base text-[#545454]">
                 {t("to")}
-
               </label>
               <Input
                 type="number"

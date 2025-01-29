@@ -180,7 +180,7 @@ CarouselPrevious.displayName = "CarouselPrevious"
 const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", setCanScrollNext, ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
   React.useEffect(() => {
-    setCanScrollNext(canScrollNext);
+      setCanScrollNext(canScrollNext);
   }, [canScrollNext]);
   return (
     (<Button

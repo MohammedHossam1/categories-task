@@ -20,7 +20,7 @@ import { PiHandbagSimple } from "react-icons/pi";
 import TextBackground from "../ui/text-background";
 import Image from "next/image";
 import { RiArrowDownSLine } from "react-icons/ri";
-import LanguageSwitcher from "../ui/custom-select";
+import LanguageSwitcher from "../ui/LanguageSwitcher";
 
 const Navbar = () => {
   const menuItems = ["home", "categories", "aboutUs", "contactUs", "faqs"];

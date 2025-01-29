@@ -6,7 +6,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 
 const LanguageSwitcher = ({ options, onChange, defaultValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(defaultValue || "");
+  const [selected, setSelected] = useState(defaultValue?.toUpperCase() || "");
   const { setCategoryName } = useCategoryNameContext();
   const [isPending, startTransition] = useTransition();
 
@@ -15,7 +15,7 @@ const LanguageSwitcher = ({ options, onChange, defaultValue }) => {
   };
 
   const handleSelect = (value) => {
-    setSelected(value);
+    setSelected(value?.toUpperCase());
     setIsOpen(false);
     startTransition(() => {
       setUserLocale(value);
@@ -43,9 +43,7 @@ const LanguageSwitcher = ({ options, onChange, defaultValue }) => {
           exit={{ opacity: 0, y: -10 }}
           className="absolute z-10 mt-2 w-20 xl:w-32 bg-white text-black rounded-lg shadow-lg"
         >
-          <div
-            className="absolute top-[-15px] start-6 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] border-b-white border-r-[10px] border-r-transparent"
-          ></div>
+          <div className="absolute top-[-15px] start-6 transform -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-b-[15px] border-b-white border-r-[10px] border-r-transparent"></div>
 
           <ul className="py-2 text-balck text-start">
             {options.map((item, index) => (

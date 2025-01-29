@@ -9,12 +9,12 @@ import {
 import CategoryCard from "@/components/ui/category-card";
 import { DialogContent, DialogTitle } from "@radix-ui/react-dialog";
 import { SlidersHorizontal } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function CategoriesUi({ categoriesData }) {
-  const t = useTranslations('categories');
-
+  const t = useTranslations("categories");
+  const locale = useLocale();
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(categoriesData.length / itemsPerPage);
@@ -49,7 +49,10 @@ export default function CategoriesUi({ categoriesData }) {
               <h2 className="text-sm lg:text-xl text-[#545454] font-medium text-nowrap">
                 {t("showing_results", {
                   start: (currentPage - 1) * itemsPerPage + 1,
-                  end: Math.min(currentPage * itemsPerPage, categoriesData.length),
+                  end: Math.min(
+                    currentPage * itemsPerPage,
+                    categoriesData.length
+                  ),
                   total: categoriesData.length,
                 })}
               </h2>
@@ -68,15 +71,13 @@ export default function CategoriesUi({ categoriesData }) {
                   </DialogContent>
                   <div className="">
                     <div className="flex mb-2 items-center gap-x-16">
-                      {/* <h2 className="text-3xl font-medium text-nowrap">
-                          Filter Option
-                        </h2> */}
                       <span className="text-discountColor max-lg:hidden text-nowrap font-bold underline cursor-pointer">
                         {t("clear_all")}
                       </span>
                     </div>
-
-                    <CategoriesFilter />
+                    <div className="h-screen pb-44 scrollbar-hide overflow-auto">
+                      <CategoriesFilter />
+                    </div>
                   </div>
                 </SheetContent>
               </Sheet>
@@ -110,7 +111,11 @@ export default function CategoriesUi({ categoriesData }) {
                 onClick={() => handlePageChange(1)}
                 disabled={currentPage === 1}
               >
-                <MdKeyboardDoubleArrowLeft />
+                {locale == "ar" ? (
+                  <MdKeyboardDoubleArrowRight />
+                ) : (
+                  <MdKeyboardDoubleArrowLeft />
+                )}
               </button>
               <button
                 className="size-9 border rounded-lg  hover:bg-gray-200 transition-all duration-500 disabled:opacity-50"
@@ -122,10 +127,11 @@ export default function CategoriesUi({ categoriesData }) {
               {Array.from({ length: totalPages }, (_, i) => (
                 <button
                   key={i}
-                  className={`size-9 border rounded-lg ${currentPage === i + 1
-                    ? "bg-main text-white"
-                    : "hover:bg-gray-200 transition-all duration-500"
-                    }`}
+                  className={`size-9 border rounded-lg ${
+                    currentPage === i + 1
+                      ? "bg-main text-white"
+                      : "hover:bg-gray-200 transition-all duration-500"
+                  }`}
                   onClick={() => handlePageChange(i + 1)}
                 >
                   {i + 1}
@@ -135,10 +141,11 @@ export default function CategoriesUi({ categoriesData }) {
                 <>
                   <span className="size-9">...</span>
                   <button
-                    className={`px-4 py-2 border rounded-lg ${currentPage === totalPages
-                      ? "bg-main text-white"
-                      : "hover:bg-gray-200 transition-all duration-500"
-                      }`}
+                    className={`px-4 py-2 border rounded-lg ${
+                      currentPage === totalPages
+                        ? "bg-main text-white"
+                        : "hover:bg-gray-200 transition-all duration-500"
+                    }`}
                     onClick={() => handlePageChange(i + 1)}
                   >
                     {totalPages}
@@ -159,7 +166,11 @@ export default function CategoriesUi({ categoriesData }) {
                 onClick={() => handlePageChange(totalPages)}
                 disabled={currentPage === totalPages}
               >
-                <MdKeyboardDoubleArrowRight />
+                {locale == "ar" ? (
+                  <MdKeyboardDoubleArrowLeft />
+                ) : (
+                  <MdKeyboardDoubleArrowRight />
+                )}
               </button>
             </div>
           </div>
